@@ -4,7 +4,7 @@ import Records from './Records'
 
 export default function Content() {
   return (
-    <Grid container spacing={3} xs={12}>
+    <Grid container spacing={3}>
       <Grid item xs={12}>
         <Map />
       </Grid>
