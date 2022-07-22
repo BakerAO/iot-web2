@@ -3,9 +3,13 @@ import {
   Grid,
 } from '@mui/material'
 
-export default function LoggedIn() {
+export default function LoggedIn(props) {
+  const { setValidToken } = props
+
   const handleLogOut= () => {
-    return null
+    localStorage.removeItem('innov8_token')
+    setValidToken(false)
+    window.location.replace('/')
   }
 
   return (

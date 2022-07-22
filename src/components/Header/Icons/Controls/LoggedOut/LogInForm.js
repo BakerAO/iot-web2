@@ -5,10 +5,10 @@ import {
   Grid,
   TextField
 } from '@mui/material'
-import api from '../../../data/api'
+import api from '../../../../../data/api'
 
 export default function LogInForm(props) {
-  const { handleModal } = props
+  const { handleModal, setValidToken } = props
   const [emailValue, setEmailValue] = useState('')
   const [passwordValue, setPasswordValue] = useState('')
   const [failedLogin, setFailedLogin] = useState(false)
@@ -23,10 +23,8 @@ export default function LogInForm(props) {
       const result = await api.post('/account/login', data)
       localStorage.setItem('innov8_token', result.data.token)
       setFailedLogin(false)
-
-      console.log(result)
       handleModal()
-
+      setValidToken(true)
       window.location.replace('/')
     } catch (e) {
       setFailedLogin(true)

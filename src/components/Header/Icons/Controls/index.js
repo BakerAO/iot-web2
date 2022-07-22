@@ -4,7 +4,7 @@ import {
   Menu,
 } from '@mui/material'
 import { Menu as MenuIcon } from '@mui/icons-material'
-import api from '../../../data/api'
+import api from '../../../../data/api'
 import LoggedIn from './LoggedIn'
 import LoggedOut from './LoggedOut'
 
@@ -12,33 +12,33 @@ export default function Controls() {
   const [validToken, setValidToken] = useState(false)
   const [anchorEl, setAnchorEl] = useState(null)
 
-  const open = !!anchorEl
+  const openControls = !!anchorEl
 
-  const handleOpen = (e) => {
+  const handleOpenControls = (e) => {
     setAnchorEl(e.currentTarget)
   }
 
-  const handleClose = () => {
+  const handleCloseControls = () => {
     setAnchorEl(null)
   }
 
-  const verifyToken = async (token) => await api.get(
-    '/account/verify_token',
-    {
-      headers: {
-        auth_token: token
+  const verifyToken = async (token) => {
+    const result = await api.get(
+      '/account/verify_token',
+      {
+        headers: {
+          auth_token: token
+        }
       }
-    }
-  )
+    )
+    setValidToken(result?.status === 200)
+  }
 
   useEffect(() => {
     const innov8Token = localStorage.getItem('innov8_token')
 
     try {
-      if (innov8Token) {
-        const result = verifyToken(innov8Token)
-        setValidToken(result?.status === 200)
-      }
+      if (innov8Token) verifyToken(innov8Token)
     } catch (e) {
       setValidToken(false)
     }
@@ -50,16 +50,19 @@ export default function Controls() {
         edge="start"
         color="inherit"
         aria-label="open drawer"
-        onClick={handleOpen}
+        onClick={handleOpenControls}
       >
         <MenuIcon />
       </IconButton>
       <Menu
         anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
+        open={openControls}
+        onClose={handleCloseControls}
       >
-        {validToken ? <LoggedIn /> : <LoggedOut />}
+        {validToken
+          ? <LoggedIn setValidToken={setValidToken} />
+          : <LoggedOut setValidToken={setValidToken} />
+        }
       </Menu>
     </>
   )

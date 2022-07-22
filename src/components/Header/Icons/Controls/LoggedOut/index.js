@@ -10,7 +10,8 @@ import {
 import RegisterForm from './RegisterForm'
 import LogInForm from './LogInForm'
 
-export default function LoggedOut() {
+export default function LoggedOut(props) {
+  const { setValidToken } = props
   const [open, setOpen] = useState(false)
   const [registerForm, setRegisterForm] = useState(false)
 
@@ -45,8 +46,14 @@ export default function LoggedOut() {
         </DialogTitle>
         <DialogContent>
           {registerForm
-            ? <RegisterForm handleModal={handleModal} />
-            : <LogInForm handleModal={handleModal} />
+            ? <RegisterForm
+                handleModal={handleModal}
+                setValidToken={setValidToken}
+              />
+            : <LogInForm
+                handleModal={handleModal}
+                setValidToken={setValidToken}
+              />
           }
         </DialogContent>
         <DialogActions>
