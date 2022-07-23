@@ -1,6 +1,8 @@
 import { Paper } from "@mui/material";
 
-export default function Records() {
+export default function Records(props) {
+  const { selectedDevice } = props
+
   return (
     <Paper
       sx={{
@@ -11,6 +13,7 @@ export default function Records() {
       }}
     >
       Records
+      {selectedDevice?.alias}
     </Paper>
   )
 }

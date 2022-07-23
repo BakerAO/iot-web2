@@ -15,13 +15,21 @@ const styles = {
 }
 
 export default function Menu(props) {
-  const { devices } = props
+  const { devices, setSelectedId } = props
 
   const menuDevices = useMemo(() => {
-    return devices.map(d => {
-      return <MenuItem key={d.id} device={d} />
-    })
-  }, [devices])
+    const listItems = []
+    for (const [k, v] of devices) {
+      listItems.push(
+        <MenuItem
+          key={k}
+          device={v}
+          setSelectedId={setSelectedId}
+        />
+      )
+    }
+    return listItems
+  }, [devices, setSelectedId])
 
   return (
     <Paper sx={styles.container}>

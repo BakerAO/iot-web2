@@ -1,10 +1,11 @@
-import { ListItem } from "@mui/material";
+import { ListItemButton } from "@mui/material";
 
 export default function MenuItem(props) {
-  const { device } = props
+  const { device, setSelectedId } = props
+
   return (
-    <ListItem>
+    <ListItemButton onClick={() => setSelectedId(device.id)}>
       {device.alias}
-    </ListItem>
+    </ListItemButton>
   )
 }
