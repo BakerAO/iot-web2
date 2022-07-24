@@ -1,23 +1,29 @@
+import { useState } from 'react'
 import { Grid } from '@mui/material'
 import Content from './Content'
 import Menu from './Menu'
 
-export default function Body(props) {
-  const { devices, selectedDevice, setSelectedId } = props
+const styles = {
+  container: {
+    justifyContent: 'center',
+    height: '85vh'
+  }
+}
+
+export default function Body() {
+  const [selectedId, setSelectedId] = useState(null)
 
   return (
-    <Grid container justifyContent="center" pt={5} className="iot-body">
-      <Grid container item xs={3} pr={2}>
+    <Grid container pt={5} style={styles.container} className="iot-body">
+      <Grid container item xs={3} pr={1}>
         <Menu 
-          devices={devices}
-          selectedId={selectedDevice?.id}
+          selectedId={selectedId}
           setSelectedId={setSelectedId}
         />
       </Grid>
       <Grid container item xs={9}>
         <Content
-          devices={devices}
-          selectedDevice={selectedDevice}
+          selectedId={selectedId}
         />
       </Grid>
     </Grid>

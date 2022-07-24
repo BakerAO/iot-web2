@@ -4,4 +4,4 @@
 Version 2.0
 
 docker-composer build
-docker-composer up
+docker-composer up -d

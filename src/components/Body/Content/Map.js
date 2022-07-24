@@ -7,7 +7,8 @@ export default function Map() {
         p: 2,
         display: 'flex',
         flexDirection: 'column',
-        height: 240,
+        height: '100%',
+        minHeigh: '240px'
       }}
     >
       Map
