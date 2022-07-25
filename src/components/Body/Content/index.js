@@ -30,7 +30,7 @@ export default function Content(props) {
   return (
     <Grid container spacing={1} className="iot-content">
       <Grid item xs={12} sx={{ height: '42vh' }}>
-        <Map selectedDevice={selectedDevice} />
+        <Map devices={[selectedDevice]} />
       </Grid>
       <Grid item xs={12} sx={{ height: '42vh' }}>
         <Records selectedDevice={selectedDevice} />
