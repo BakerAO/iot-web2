@@ -9,30 +9,30 @@ export default function Content(props) {
 
   const [selectedDevice, setSelectedDevice] = useState(null)
 
-  const getSelectedDevice = async () => {
-    try {
-      const token = localStorage.getItem('innov8_token')
-      if (token && selectedId) {
-        const headers = { auth_token: token }
-        const result = await api.get(`/device/${selectedId}`, { headers })
-        setSelectedDevice(result?.data)
-      }
-    } catch (e) {
-      setSelectedDevice(null)
-      console.error(e)
-    }
-  }
-
   useEffect(() => {
+    const getSelectedDevice = async () => {
+      try {
+        const token = localStorage.getItem('innov8_token')
+        if (token && selectedId) {
+          const headers = { auth_token: token }
+          const result = await api.get(`/device/${selectedId}`, { headers })
+          setSelectedDevice(result?.data)
+        }
+      } catch (e) {
+        setSelectedDevice(null)
+        console.error(e)
+      }
+    }
+
     getSelectedDevice()
   }, [selectedId])
 
   return (
     <Grid container spacing={1} className="iot-content">
-      <Grid item xs={12} sx={{ height: '50%' }}>
+      <Grid item xs={12} sx={{ height: '42vh' }}>
         <Map selectedDevice={selectedDevice} />
       </Grid>
-      <Grid item xs={12} sx={{ height: '50%' }}>
+      <Grid item xs={12} sx={{ height: '42vh' }}>
         <Records selectedDevice={selectedDevice} />
       </Grid>
     </Grid>

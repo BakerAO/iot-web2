@@ -1,4 +1,9 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import {
+  Box,
+  Grid,
+  Paper,
+  Typography
+} from "@mui/material";
 
 export default function Records(props) {
   const { selectedDevice } = props
@@ -13,7 +18,7 @@ export default function Records(props) {
         minHeigh: '240px'
       }}
     >
-      <Grid container>
+      <Grid container  sx={{ overflow: 'auto' }}>
         <Grid item xs={12}>
           <Typography
             component="h1"
@@ -22,7 +27,7 @@ export default function Records(props) {
             noWrap
             sx={{ flexGrow: 1 }}
           >
-            {selectedDevice?.alias}
+            {selectedDevice?.alias ?? 'Records'}
           </Typography>
         </Grid>
         <Grid item xs={12}>
