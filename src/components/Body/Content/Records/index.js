@@ -2,46 +2,31 @@ import { useMemo } from 'react'
 import {
   Box,
   Card,
-  CardHeader,
-  Table,
-  TableBody,
-  TableCell,
-  TableRow
-} from "@mui/material";
-import { format } from "date-fns";
-import TableHeader from './TableHeader'
+  CardHeader
+} from "@mui/material"
+import ValveButton from './ValveButton'
+import SimpleMotorTable from './SimpleMotorTable'
 
 export default function Records(props) {
   const { selectedDevice } = props
 
-  const tableRows = useMemo(() => {
-    return (
-      <TableRow hover key={order.id}>
-        <TableCell>{order.ref}</TableCell>
-        <TableCell>{order.customer.name}</TableCell>
-        <TableCell>{format(order.createdAt, 'yyyy-MM-dd')}</TableCell>
-        <TableCell>{order.status}</TableCell>
-      </TableRow>
-    )
-  })
+  const table = useMemo(() => {
+    if (selectedDevice?.type === 'simple_motor') {
+      return <SimpleMotorTable selectedDevice={selectedDevice} />
+    }
+    return null
+  }, [selectedDevice])
 
   return (
     <Card>
-      <CardHeader title="Records" />
+      <CardHeader
+        title="Records"
+        action={
+          <ValveButton latest={selectedDevice?.records[0]} />
+        }
+      />
       <Box sx={{ minWidth: 800 }}>
-        <Table>
-          <TableHeader />
-          <TableBody>
-            {orders.map((order) => (
-              <TableRow hover key={order.id}>
-                <TableCell>{order.ref}</TableCell>
-                <TableCell>{order.customer.name}</TableCell>
-                <TableCell>{format(order.createdAt, 'yyyy-MM-dd')}</TableCell>
-                <TableCell>{order.status}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
+        {table}
       </Box>
     </Card>
   )

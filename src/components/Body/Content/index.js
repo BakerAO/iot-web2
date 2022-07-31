@@ -32,7 +32,7 @@ export default function Content(props) {
       <Grid item xs={12} sx={{ height: '42vh' }}>
         <Map devices={[selectedDevice]} />
       </Grid>
-      <Grid item xs={12} sx={{ height: '42vh' }}>
+      <Grid item xs={12} sx={{ height: '40vh', overflow: 'auto' }}>
         <Records selectedDevice={selectedDevice} />
       </Grid>
     </Grid>
