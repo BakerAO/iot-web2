@@ -11,6 +11,8 @@ import BatteryStatus from './BatteryStatus'
 export default function SimpleMotorTable(props) {
   const { selectedDevice } = props
 
+  const capitalize = (s) => s && s[0].toUpperCase() + s.slice(1)
+
   const tableRows = useMemo(() => {
     return selectedDevice?.records
       ? selectedDevice.records.map(r => (
@@ -18,7 +20,7 @@ export default function SimpleMotorTable(props) {
           <TableCell>{r.datetime}</TableCell>
           <TableCell>{selectedDevice.alias}</TableCell>
           <TableCell><BatteryStatus voltage={r.battery} /></TableCell>
-          <TableCell>{r.valve_status}</TableCell>
+          <TableCell>{capitalize(r.valve_status)}</TableCell>
         </TableRow>
       ))
       : []

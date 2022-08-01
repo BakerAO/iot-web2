@@ -1,14 +1,29 @@
 import { Button } from "@mui/material"
+import api from '../../../../data/api'
 
 export default function ValveButton(props) {
   const { latest } = props
 
-  const handleClose = () => {
-    return
+  const handleClose = async () => {
+    const token = localStorage.getItem('innov8_token')
+    if (token) {
+      await api.post(
+        '/simple_motors/shut_off',
+        { device_id: latest.id },
+        { headers: { auth_token: `${token}` } }
+      )
+    }
   }
 
-  const handleOpen = () => {
-    return
+  const handleOpen = async () => {
+    const token = localStorage.getItem('innov8_token')
+    if (token) {
+      await api.post(
+        '/simple_motors/open',
+        { device_id: latest.id },
+        { headers: { auth_token: `${token}` } }
+      )
+    }
   }
 
   if (latest?.valve_status === 'open') {
