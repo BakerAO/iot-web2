@@ -8,8 +8,10 @@ import {
 } from "@mui/material"
 import BatteryStatus from './BatteryStatus'
 
-export default function SimpleMotorTable(props) {
+export default function ThermometerTable(props) {
   const { selectedDevice } = props
+
+  const calcF = (temp) => Math.round((temp * 9 / 5) + 32)
 
   const tableRows = useMemo(() => {
     return selectedDevice?.records
@@ -18,7 +20,8 @@ export default function SimpleMotorTable(props) {
           <TableCell>{r.datetime}</TableCell>
           <TableCell>{selectedDevice.alias}</TableCell>
           <TableCell><BatteryStatus voltage={r.battery} /></TableCell>
-          <TableCell>{r.valve_status}</TableCell>
+          <TableCell>{`${calcF(r.temperature)}°F / ${r.temperature}°C`}</TableCell>
+          <TableCell>{`${r.humidity}%`}</TableCell>
         </TableRow>
       ))
       : []
@@ -38,7 +41,10 @@ export default function SimpleMotorTable(props) {
             Battery
           </TableCell>
           <TableCell>
-            Value Status
+            Temperature
+          </TableCell>
+          <TableCell>
+            Humidity
           </TableCell>
         </TableRow>
       </TableHead>
