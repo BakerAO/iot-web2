@@ -1,7 +1,4 @@
-import {
-  Button,
-  Grid,
-} from '@mui/material'
+import { Button } from '@mui/material'
 
 export default function LoggedIn(props) {
   const { setValidToken } = props
@@ -13,10 +10,8 @@ export default function LoggedIn(props) {
   }
 
   return (
-    <Grid container spacing={2}>
-      <Grid item xs={6}>
+    <div style={{ }}>
         <Button onClick={handleLogOut}>Log Out</Button>
-      </Grid>
-    </Grid>
+    </div>
   )
 }

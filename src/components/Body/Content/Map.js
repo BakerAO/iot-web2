@@ -34,7 +34,7 @@ export default function Map(props) {
         minHeigh: '240px'
       }}
     >
-      <div style={{ height: '100%', width: '90%' }}>
+      <div style={{ height: '100%', width: '100%' }}>
         <GoogleMap
           bootstrapURLKeys={{ key: 'AIzaSyAin1K73pA7JD0Rc-yMzg6p-Q2VEhYk22E' }}
           defaultCenter={{ lat: 33, lng: -97 }}
