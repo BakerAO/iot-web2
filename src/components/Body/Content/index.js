@@ -25,6 +25,12 @@ export default function Content(props) {
     }
 
     getSelectedDevice()
+
+    const interval = setInterval(() => {
+      getSelectedDevice()
+    }, 5000)
+
+    return () => clearInterval(interval)
   }, [selectedId])
 
   return (
