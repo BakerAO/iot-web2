@@ -33,9 +33,11 @@ export default function ValveButton(props) {
       </Button>
     )
   } else if (latest?.valve_status === 'closed') {
-    <Button variant="outlined" onClick={handleOpen}>
-      Open Valve
-    </Button>
+    return (
+      <Button variant="outlined" onClick={handleOpen}>
+        Open Valve
+      </Button>
+    )
   } else {
     return
   }
