@@ -24,7 +24,7 @@ export default function Records(props) {
     <Card>
       <CardHeader
         title="Records"
-        action={<ValveButton latest={{ id: selectedDevice.id, ...selectedDevice?.records[0] }} />}
+        action={<ValveButton latest={{ id: selectedDevice?.id, ...selectedDevice?.records[0] }} />}
       />
       <Box sx={{ minWidth: 800 }}>
         {table}
