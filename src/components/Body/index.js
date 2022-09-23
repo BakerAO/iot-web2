@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { Grid } from '@mui/material'
 import Content from './Content'
 import Menu from './Menu'
@@ -11,20 +10,13 @@ const styles = {
 }
 
 export default function Body() {
-  const [selectedId, setSelectedId] = useState(null)
-
   return (
     <Grid container pt={5} style={styles.container} className="iot-body">
       <Grid container item xs={3} pr={1}>
-        <Menu 
-          selectedId={selectedId}
-          setSelectedId={setSelectedId}
-        />
+        <Menu />
       </Grid>
       <Grid container item xs={9}>
-        <Content
-          selectedId={selectedId}
-        />
+        <Content />
       </Grid>
     </Grid>
   )

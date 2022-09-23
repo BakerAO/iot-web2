@@ -15,9 +15,7 @@ const styles = {
   }
 }
 
-export default function Menu(props) {
-  const { selectedId, setSelectedId } = props
-
+export default function Menu() {
   const [deviceList, setDeviceList] = useState([])
 
   const getDeviceList = async () => {
@@ -52,13 +50,11 @@ export default function Menu(props) {
         <MenuItem
           key={device.id}
           device={device}
-          selectedId={selectedId}
-          setSelectedId={setSelectedId}
         />
       )
     }
     return listItems
-  }, [deviceList, selectedId, setSelectedId])
+  }, [deviceList])
 
   return (
     <Paper sx={styles.container}>

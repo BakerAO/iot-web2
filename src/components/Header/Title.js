@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material'
+import { Link, Typography } from '@mui/material'
 
 export default function Title() {
   return (
@@ -9,7 +9,9 @@ export default function Title() {
       noWrap
       sx={{ flexGrow: 1 }}
     >
-      Dashboard
+      <Link to={'/'} >
+        Dashboard
+      </Link>
     </Typography>
   )
 }

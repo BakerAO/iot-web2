@@ -6,6 +6,7 @@ import {
   Grid,
   ThemeProvider,
 } from '@mui/material'
+import { DataProvider } from '../context/DataContext'
 import Header from './Header'
 import Body from './Body'
 import Footer from './Footer'
@@ -28,9 +29,11 @@ export default function Main() {
         >
           <Container >
             <Grid container className="iot-start">
-              <Header />
-              <Body />
-              <Footer />
+              <DataProvider>
+                <Header />
+                <Body />
+                <Footer />
+              </DataProvider>
             </Grid>
           </Container>
         </Box>

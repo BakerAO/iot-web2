@@ -1,4 +1,4 @@
-import orangeMarker from '../../../assets/markerOrange.svg'
+import orangeMarker from '../../../../assets/markerOrange.svg'
 
 export default function Marker(props) {
   const { alias } = props
