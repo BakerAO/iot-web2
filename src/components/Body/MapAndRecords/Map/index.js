@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { Paper } from "@mui/material";
+import { Paper } from '@mui/material'
 import GoogleMap from 'google-map-react'
 import Marker from './Marker'
 

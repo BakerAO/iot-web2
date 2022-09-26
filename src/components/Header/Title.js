@@ -1,17 +1,31 @@
-import { Link, Typography } from '@mui/material'
+import { Link } from 'react-router-dom'
+import { Typography } from '@mui/material'
 
 export default function Title() {
   return (
-    <Typography
-      component="h1"
-      variant="h6"
-      color="inherit"
-      noWrap
-      sx={{ flexGrow: 1 }}
-    >
-      <Link to={'/'} >
-        Dashboard
+    <>
+      <Link to="/">
+        <Typography
+          component="h1"
+          variant="h6"
+          color="white"
+          noWrap
+          sx={{ flexGrow: 1, marginRight: '15px' }}
+        >
+            Dashboard
+        </Typography>
       </Link>
-    </Typography>
+      <Link to="/schedule">
+        <Typography
+          component="h1"
+          variant="h6"
+          color="white"
+          noWrap
+          sx={{ flexGrow: 1 }}
+        >
+            Schedule
+        </Typography>
+      </Link>
+    </>
   )
 }

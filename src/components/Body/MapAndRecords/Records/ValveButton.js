@@ -1,5 +1,5 @@
 import { Button } from "@mui/material"
-import api from '../../../../../data/api'
+import api from '../../../../data/api'
 
 export default function ValveButton(props) {
   const { latest } = props

@@ -1,6 +1,8 @@
+import { Route, Routes } from 'react-router-dom'
 import { Grid } from '@mui/material'
-import Content from './Content'
 import Menu from './Menu'
+import MapAndRecords from './MapAndRecords'
+import Schedule from './Schedule'
 
 const styles = {
   container: {
@@ -16,7 +18,10 @@ export default function Body() {
         <Menu />
       </Grid>
       <Grid container item xs={9}>
-        <Content />
+        <Routes>
+          <Route path="/" element={<MapAndRecords />} />
+          <Route path="/schedule" element={<Schedule />} />
+        </Routes>
       </Grid>
     </Grid>
   )

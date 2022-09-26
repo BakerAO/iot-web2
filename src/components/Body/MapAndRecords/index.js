@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Grid } from "@mui/material"
-import { useDataContext } from '../../../../context/DataContext'
-import api from '../../../../data/api'
+import { useDataContext } from '../../../context/DataContext'
+import api from '../../../data/api'
 import Map from './Map'
 import Records from './Records'
 

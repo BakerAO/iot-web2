@@ -27,7 +27,7 @@ export default function Main() {
             overflow: 'auto',
           }}
         >
-          <Container >
+          <Container>
             <Grid container className="iot-start">
               <DataProvider>
                 <Header />
