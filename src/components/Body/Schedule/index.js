@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from 'react'
-import { Button, Grid } from "@mui/material"
+import { Button, Card, Grid } from "@mui/material"
 import api from  '../../../data/api'
 import { useDataContext } from '../../../context/DataContext'
+import Calendar from './Calendar'
 
 export default function Schedule() {
   const { data } = useDataContext()
@@ -31,8 +32,8 @@ export default function Schedule() {
       if (token) {
         const payload = {
           frequency: 'daily',
-          startTime: '12:00',
-          durationMinutes: 15
+          startTime: '15:00',
+          durationMinutes: 60
         }
         const options = { headers: { auth_token: `${token}` } }
         await api.post(`/schedule/${data.selectedDeviceId}`, payload, options)
@@ -45,14 +46,18 @@ export default function Schedule() {
 
   return (
     <Grid container spacing={1} className="iot-schedule">
-      <Grid item xs={12} sx={{ height: '42vh' }}>
-        <div>{JSON.stringify(deviceData)}</div>
+      <Grid item xs={12}>
+        <Card sx={{ height: '42vh', width: '100%' }}>
+          <Calendar deviceData={deviceData} />
+        </Card>
       </Grid>
-      <Grid item xs={12} sx={{ height: '40vh', overflow: 'auto' }}>
-        <div>{data?.selectedDeviceId}</div>
-        <Button variant="outlined" onClick={handleClick}>
-          Click Me
-        </Button>
+      <Grid item xs={12}>
+        <Card sx={{ height: '40vh', width: '100%', overflow: 'auto' }}>
+          <div>{data?.selectedDeviceId}</div>
+          <Button variant="outlined" onClick={handleClick}>
+            Click Me
+          </Button>
+        </Card>
       </Grid>
     </Grid>
   )

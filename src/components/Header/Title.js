@@ -7,23 +7,23 @@ export default function Title() {
       <Link to="/">
         <Typography
           component="h1"
-          variant="h6"
+          variant="h5"
           color="white"
           noWrap
           sx={{ flexGrow: 1, marginRight: '15px' }}
         >
-            Dashboard
+          Dashboard
         </Typography>
       </Link>
       <Link to="/schedule">
         <Typography
           component="h1"
-          variant="h6"
+          variant="h5"
           color="white"
           noWrap
           sx={{ flexGrow: 1 }}
         >
-            Schedule
+          Schedule
         </Typography>
       </Link>
     </>
