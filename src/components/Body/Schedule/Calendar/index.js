@@ -1,11 +1,8 @@
-import React from 'react'
 import { Button, Grid, Typography } from '@mui/material'
 import { ChevronLeft, ChevronRight } from '@mui/icons-material'
 
 export default function Calendar(props) {
-  const { deviceData } = props
-
-  console.log(deviceData)
+  const { deviceId, schedules } = props
 
   return (
     <Grid container>
@@ -29,7 +26,8 @@ export default function Calendar(props) {
         <div style={{ flex: 3 }} />
       </Grid>
       <Grid item xs={12} sx={{ height: '37vh' }}>
-        Body
+        {JSON.stringify(deviceId)}
+        {JSON.stringify(schedules)}
       </Grid>
     </Grid>
   )

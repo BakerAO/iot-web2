@@ -4,7 +4,7 @@ import { Typography } from '@mui/material'
 export default function Title() {
   return (
     <>
-      <Link to="/">
+      <Link to="/" style={{ textDecoration: 'none' }}>
         <Typography
           component="h1"
           variant="h5"
@@ -15,7 +15,7 @@ export default function Title() {
           Dashboard
         </Typography>
       </Link>
-      <Link to="/schedule">
+      <Link to="/schedule" style={{ textDecoration: 'none' }}>
         <Typography
           component="h1"
           variant="h5"
