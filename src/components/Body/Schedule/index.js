@@ -1,28 +1,30 @@
 import { Card, Grid } from '@mui/material'
-import { useDataContext } from '../../../context/DataContext'
+import { useDeviceContext } from '../../../context/DeviceContext'
 import Calendar from './Calendar'
 import CreateForm from './CreateForm'
 import useSchedules from './useSchedules'
 
 export default function Schedule() {
-  const { data } = useDataContext()
-  const schedules = useSchedules(data?.selectedDeviceId)
+  const { device } = useDeviceContext()
+
+  const { schedules, refetch } = useSchedules(device?.id)
 
   return (
     <Grid container spacing={1} className="iot-schedule">
       <Grid item xs={12}>
-        <Card sx={{ height: '42vh', width: '100%' }}>
+        <Card sx={{ height: '57vh', width: '100%' }}>
           <Calendar
-            deviceId={data?.selectedDeviceId}
+            deviceId={device?.id}
             schedules={schedules}
           />
         </Card>
       </Grid>
       <Grid item xs={12}>
-        <Card sx={{ height: '40vh', width: '100%', overflow: 'auto' }}>
+        <Card sx={{ height: '25vh', width: '100%' }}>
           <CreateForm
-            deviceId={data?.selectedDeviceId}
+            deviceId={device?.id}
             schedules={schedules}
+            refetch={refetch}
           />
         </Card>
       </Grid>

@@ -2,7 +2,13 @@ import { useCallback, useState, useEffect } from 'react'
 import api from '../../../data/api'
 
 export default function useSchedules(deviceId) {
+
   const [schedules, setSchedules] = useState([])
+  const [refresh, setRefresh] = useState(false)
+
+  const refetch = () => {
+    setRefresh(!refresh)
+  }
 
   const getSchedules = useCallback(async () => {
     try {
@@ -20,7 +26,7 @@ export default function useSchedules(deviceId) {
 
   useEffect(() => {
     getSchedules()
-  }, [deviceId, getSchedules])
+  }, [deviceId, getSchedules, refresh])
 
-  return schedules
+  return { schedules, refetch }
 }

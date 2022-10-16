@@ -1,12 +1,16 @@
 import { ListItemButton } from "@mui/material"
-import { useDataContext } from '../../../context/DataContext'
+import { useDeviceContext } from '../../../context/DeviceContext'
 
 export default function MenuItem(props) {
   const { device } = props
-  const { data, setData } = useDataContext()
+  const { setDevice } = useDeviceContext()
 
   const setSelectedId = () => {
-    setData({ ...data, selectedDeviceId: device.id })
+    setDevice({
+      id: device.id,
+      type: device.type,
+      alias: device.alias
+    })
   }
 
   return (

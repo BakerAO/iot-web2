@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react'
 import { Grid } from "@mui/material"
-import { useDataContext } from '../../../context/DataContext'
+import { useDeviceContext } from '../../../context/DeviceContext'
 import api from '../../../data/api'
 import Map from './Map'
 import Records from './Records'
 
 export default function MapAndRecords() {
-  const { data } = useDataContext()
+  const { device } = useDeviceContext()
 
   const [selectedDevice, setSelectedDevice] = useState(null)
 
@@ -14,9 +14,9 @@ export default function MapAndRecords() {
     const getSelectedDevice = async () => {
       try {
         const token = localStorage.getItem('innov8_token')
-        if (token && data?.selectedDeviceId) {
+        if (token && device?.id) {
           const headers = { auth_token: token }
-          const result = await api.get(`/device/${data.selectedDeviceId}`, { headers })
+          const result = await api.get(`/device/${device.id}`, { headers })
           setSelectedDevice(result?.data)
         }
       } catch (e) {
@@ -32,7 +32,7 @@ export default function MapAndRecords() {
     }, 5000)
 
     return () => clearInterval(interval)
-  }, [data?.selectedDeviceId])
+  }, [device?.id])
 
   return (
     <Grid container spacing={1} className="iot-mapandrecords">
