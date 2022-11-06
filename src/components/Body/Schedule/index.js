@@ -1,7 +1,7 @@
 import { Card, Grid } from '@mui/material'
 import { useDeviceContext } from '../../../context/DeviceContext'
 import Calendar from './Calendar'
-import CreateForm from './CreateForm'
+import CardsAndForm from './CardsAndForm'
 import useSchedules from './useSchedules'
 
 export default function Schedule() {
@@ -12,7 +12,7 @@ export default function Schedule() {
   return (
     <Grid container spacing={1} className="iot-schedule">
       <Grid item xs={12}>
-        <Card sx={{ height: '57vh', width: '100%' }}>
+        <Card sx={{ height: '50vh', width: '100%' }}>
           <Calendar
             deviceId={device?.id}
             schedules={schedules}
@@ -20,8 +20,8 @@ export default function Schedule() {
         </Card>
       </Grid>
       <Grid item xs={12}>
-        <Card sx={{ height: '25vh', width: '100%' }}>
-          <CreateForm
+        <Card sx={{ height: '32vh', width: '100%' }}>
+          <CardsAndForm
             deviceId={device?.id}
             schedules={schedules}
             refetch={refetch}
