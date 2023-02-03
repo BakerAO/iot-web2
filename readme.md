@@ -3,5 +3,5 @@
 ### Web Client
 Version 2.0
 
-docker-composer build
-docker-composer up -d
+docker-compose up -d --build
+docker-compose down
