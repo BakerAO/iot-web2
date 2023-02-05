@@ -1,13 +1,10 @@
 FROM node:16
 
 WORKDIR /web
-COPY ./build /web/build
-COPY ./server.js /web/server.js
+COPY . /web
 
-RUN npm install express
-
-# RUN npm install
-# RUN npm run build
+RUN npm install
+RUN npm run build
 
 EXPOSE 8080
 
